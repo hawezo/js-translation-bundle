@@ -1,0 +1,31 @@
+services:
+
+    js_translation.extractor:
+        public: true
+        class: Hawezo\JsTranslationBundle\Extractor\TranslationExtractor
+        arguments: [ '@translator', '@parameter_bag' ]
+
+    js_translation.twig_extension:
+        public: true
+        class: Hawezo\JsTranslationBundle\Twig\JsTranslationExtension
+        arguments: [ '@js_translation.extractor', '@Symfony\Component\Routing\Generator\UrlGeneratorInterface' ]
+        tags:
+            - { name: twig.extension }
+
+    Hawezo\JsTranslationBundle\Extractor\ExtractorInterface: '@js_translation.extractor'
+
+    Hawezo\JsTranslationBundle\Listener\ControllerListener:
+        public: true
+        class: Hawezo\JsTranslationBundle\Listener\ControllerListener
+        arguments: [ '@parameter_bag', '@kernel' ]
+        tags:
+            - { name: kernel.event_listener, event: kernel.controller }
+
+    Hawezo\JsTranslationBundle\Controller\ApiController: 
+        tags: ['controller.service_arguments']
+        arguments: [ '@js_translation.extractor' ]
+        
+    Hawezo\JsTranslationBundle\Command\JsTranslationExportCommand:
+        tags:
+            - { name: 'console.command', command: 'translation:extract-js' }
+        arguments: [ '@js_translation.extractor', '@parameter_bag' ]

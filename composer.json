@@ -1,0 +1,32 @@
+{
+    "name": "hawezo/js-translation-bundle",
+    "description": "A bundle allowing Javascript to use translation messages",
+    "keywords": [ "translation", "javascript", "symfony" ],
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Enzo Innocenzi",
+            "email": "enzo.inno@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1",
+        "symfony/framework-bundle": "^3.4||^4.0",
+        "symfony/translation": ">=3.4",
+        "symfony/twig-bundle": ">=3.4",
+        "symfony/console": ">=3.4"
+    },
+    "require-dev": {
+        "symfony/twig-bridge": ">=3.4",
+        "symfony/dependency-injection": ">=3.4"
+    },
+    "autoload": {
+        "psr-4": { "Hawezo\\JsTranslationBundle\\": "src/" }
+    },
+    "extra": {
+        "symfony": {
+            "allow-contrib": "true"
+        }
+    }
+}

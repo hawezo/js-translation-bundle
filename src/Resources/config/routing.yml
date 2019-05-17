@@ -1,0 +1,3 @@
+js_translation_api:
+    path: /js-translation
+    defaults: { _controller: Hawezo\JsTranslationBundle\Controller\ApiController::getTranslations }
