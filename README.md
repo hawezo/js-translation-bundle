@@ -1,3 +1,7 @@
+## Please consider using https://github.com/hawezo/javascript-bundle instead
+
+---
+
 # JsTranslation Bundle
 
 ![Packagist Version](https://img.shields.io/packagist/v/hawezo/js-translation-bundle.svg?style=flat-square)
